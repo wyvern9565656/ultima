@@ -1,0 +1,36 @@
+[package]
+name = "ultima"
+version = "0.1.0"
+edition = "2021"
+description = "Ultima — hub para baixar, compilar e executar os apps dos seus repositórios"
+license = "MIT"
+
+[dependencies]
+eframe = { version = "0.37", default-features = false, features = [
+    "glow",
+    "default_fonts",
+    "wayland",
+    "x11",
+] }
+egui = "0.37"
+reqwest = { version = "0.13", default-features = false, features = [
+    "blocking",
+    "json",
+    "native-tls",
+    "charset",
+] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+zip = { version = "2.6", default-features = false, features = ["deflate"] }
+flate2 = "1"
+tar = "0.4"
+walkdir = "2"
+dirs = "7"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = true
